@@ -1,51 +1,31 @@
 import 'package:flutter/material.dart';
 
 void main() {
-  runApp(const MyApp());
+  runApp(MyApp());
 }
 
-class MyApp extends StatefulWidget {
+class MyApp extends StatelessWidget {
   const MyApp({Key? key}) : super(key: key);
-
-  @override
-  State<MyApp> createState() => _MyAppState();
-}
-
-class _MyAppState extends State<MyApp> with SingleTickerProviderStateMixin {
-  late AnimationController _controller;
-  List<Widget> widgets = [];
-
-  _MyAppState() {
-    for (int i = 0; i < 20; i++) {
-      widgets.add(Text(
-        "Data Ke-" + i.toString(),
-        style: const TextStyle(fontSize: 35),
-      ));
-    }
-  }
-  @override
-  void initState() {
-    super.initState();
-    _controller = AnimationController(vsync: this);
-  }
-
-  @override
-  void dispose() {
-    super.dispose();
-    _controller.dispose();
-  }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
       home: Scaffold(
-        appBar: AppBar(
-          title: const Text("Sulpiana"),
-        ),
-        body: ListView(
-          children: widgets,
-        ),
-      ),
+          appBar: AppBar(
+            title: const Text("Sulpiana"),
+          ),
+          body: Center(
+            child: Container(
+              width: 350,
+              height: 500,
+              color: Colors.white10,
+              child: Image(
+                image: NetworkImage(
+                    "https://dynamic-media-cdn.tripadvisor.com/media/photo-o/1b/91/0c/10/caption.jpg?w=300&h=300&s=1"),
+                fit: BoxFit.fill,
+              ),
+            ),
+          )),
     );
   }
 }
